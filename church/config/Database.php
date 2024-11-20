@@ -5,7 +5,7 @@ class Database {
 	private $_host = "localhost";
 	private $_username = "root";
 	private $_password = "";
-	private $_database = "churchapp";
+	private $_database = "church_app";
 	/*
 	Get an instance of the Database
 	@return Instance
@@ -23,7 +23,7 @@ class Database {
 		// Error handling
 		if(mysqli_connect_error()) {
 			trigger_error("Failed to conencto to MySQL: " . mysqli_connect_error(),
-				 E_USER_ERROR);
+				E_USER_ERROR);
 		}
 	}
 	// Magic method clone is empty to prevent duplication of connection
