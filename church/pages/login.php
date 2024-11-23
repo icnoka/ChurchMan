@@ -2,7 +2,7 @@
 session_start();
 if(isset($_POST['submit'])){
 	
-	 include('../config/DbFunction.php');
+	 include('../config/myFunction.php');
 	 $obj=new DbFunction();
 	 $_SESSION['login']=$_POST['id'];
 	 $obj->login($_POST['id'],$_POST['password']);

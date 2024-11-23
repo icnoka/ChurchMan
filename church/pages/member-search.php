@@ -6,7 +6,7 @@ if (! (isset ( $_SESSION ['login'] ))) {
 	header ( 'location:../index.php' );
 } 
    
-    include('../config/DbFunction.php');
+    include('../config/MyFunction.php');
     $obj=new DbFunction();
 	$rs=$obj->showSubject();
 
@@ -81,9 +81,9 @@ if (! (isset ( $_SESSION ['login'] ))) {
                                     <thead>
                                         <tr>
                                             <th>S No</th>
-                                            <th>Subject1</th>
-                                            <th>Subject2</th>
-                                            <th>Subject3</th>
+                                            <th>Member No</th>
+                                            <th>First Name</th>
+                                            <th>Surname</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -94,11 +94,11 @@ if (! (isset ( $_SESSION ['login'] ))) {
                                      while($res=$rs->fetch_object()){?>	
                                         <tr class="odd gradeX">
                                             <td><?php echo $sn?></td>
-                                            <td><?php echo htmlentities( strtoupper($res->sub1));?></td>
-                                            <td><?php echo htmlentities(strtoupper($res->sub2));?></td>
-                                             <td><?php echo htmlentities(strtoupper($res->sub3));?></td>
-                                            <td>&nbsp;&nbsp;<a href="edit-sub.php?sid=<?php echo htmlentities($res->subid);?>"><p class="fa fa-edit"></p></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                             <a href="view-subject.php?del=<?php echo htmlentities($res->subid); ?>"> <p class="fa fa-times-circle"></p></td>
+                                            <td><?php echo htmlentities(strtoupper($res->member_no));?></td>
+                                            <td><?php echo htmlentities(strtoupper($res->firstname));?></td>
+                                            <td><?php echo htmlentities(strtoupper($res->surname));?></td>
+                                            <td>&nbsp;&nbsp;<a href="edit-person.php?pid=<?php echo htmlentities($res->personid);?>"><p class="fa fa-edit"></p></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                             <a href="view-person.php?del=<?php echo htmlentities($res->personid); ?>"> <p class="fa fa-times-circle"></p></td>
                                             
                                         </tr>
                                         
