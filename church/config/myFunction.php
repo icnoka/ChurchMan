@@ -352,23 +352,18 @@ function del_std($id){
    // echo "<script>window.location.href='view-course.php'</script>";
 }
 
-function create_person($member_no, $firstname, $surname, $gender, $email, $contact1, $title = null) {
+function create_person($member_no, $firstname, $surname, $gender, $email, $contact1, $title = '0') {  // Default title to '0' (None)
     if ($member_no == "" || $firstname == "" || $surname == "" || $gender == "" || $contact1 == "") {
         echo "<script>alert('All fields are required.')</script>";
     } else {
         $db = Database::getInstance();
         $mysqli = $db->getConnection();
         
-        // Prepare the query with title as optional
-        if ($title) {
-            $query = "INSERT INTO person (member_no, firstname, surname, gender, email, contact1, title, isdeleted, isactive, ismember) VALUES (?, ?, ?, ?, ?, ?, ?, 0, 1, 1)";
-            $stmt = $mysqli->prepare($query);
-            $stmt->bind_param('ssssssi', $member_no, $firstname, $surname, $gender, $email, $contact1, $title);
-        } else {
-            $query = "INSERT INTO person (member_no, firstname, surname, gender, email, contact1, isdeleted, isactive, ismember) VALUES (?, ?, ?, ?, ?, ?, 0, 1, 1)";
-            $stmt = $mysqli->prepare($query);
-            $stmt->bind_param('ssssss', $member_no, $firstname, $surname, $gender, $email, $contact1);
-        }
+        // Always include title in the query, defaulting to '0' if not specified
+        $query = "INSERT INTO person (member_no, firstname, surname, gender, email, contact1, title, isdeleted, isactive, ismember) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?, 0, 1, 1)";
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('sssssss', $member_no, $firstname, $surname, $gender, $email, $contact1, $title);
 
         if (false === $stmt) {
             trigger_error("Error in query: " . mysqli_connect_error(), E_USER_ERROR);

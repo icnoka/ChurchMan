@@ -6,9 +6,17 @@ if (!(isset($_SESSION['login']))) {
 }
 
 if (isset($_POST['submit'])) {
-	include('../config/MyFunction.php');
-	$obj = new DbFunction();
-	$obj->create_person($_POST['member_no'], $_POST['firstname'], $_POST['surname'], $_POST['gender'], $_POST['email'], $_POST['contact1']);
+    include('../config/MyFunction.php');
+    $obj = new DbFunction();
+    $obj->create_person(
+        $_POST['member_no'], 
+        $_POST['firstname'], 
+        $_POST['surname'], 
+        $_POST['gender'], 
+        $_POST['email'], 
+        $_POST['contact1'],
+        $_POST['title']  
+    );
 }
 ?>
 <!DOCTYPE html>
@@ -108,12 +116,18 @@ if (isset($_POST['submit'])) {
 									</div>
 									<br><br>
 									<div class="form-group">
-										<div class="col-lg-4">
-											<label>Title</label>
-										</div>
-										<div class="col-lg-6">
-											<input class="form-control" name="title">
-										</div>
+									<div class="col-lg-4">
+										<label>Title</label>
+									</div>
+									<div class="col-lg-6">
+										<select class="form-control" name="title">
+											<option value="0">None</option>
+											<option value="1">Mr.</option>
+											<option value="2">Mrs.</option>
+											<option value="3">Dr.</option>
+											<option value="4">Rev.</option>
+										</select>
+									</div>
 									</div>
 									<br><br>
 									<div class="form-group">
