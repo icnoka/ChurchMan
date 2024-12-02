@@ -396,6 +396,27 @@ function create_person($member_no, $firstname, $surname, $gender, $email, $conta
     }
 }
 
+function get_member_details($member_no) {
+    $db = Database::getInstance();
+    $mysqli = $db->getConnection();
+    $query = "SELECT * FROM person WHERE member_no = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param('s', $member_no);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+function getMemberById($id) {
+    $db = Database::getInstance();
+    $mysqli = $db->getConnection();
+    $query = "SELECT * FROM person WHERE id = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+
 }
 
 ?>
