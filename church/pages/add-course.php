@@ -15,7 +15,28 @@ if (isset($_POST['submit'])) {
         $_POST['gender'], 
         $_POST['email'], 
         $_POST['contact1'],
-        $_POST['title']  
+        $_POST['title'],
+        null, // imageUrl - not implemented in form yet
+        $_POST['maritalStatus'],
+        $_POST['nameOfSpouse'],
+        $_POST['isYourSpouseAChristian'],
+        $_POST['numOfChildren'],
+        $_POST['residenceAddress'],
+        $_POST['houseNumber'],
+        $_POST['residenceLandMark'],
+        $_POST['phoneNumber'],
+        $_POST['jobStatus'],
+        $_POST['nameOfEmployer'],
+        $_POST['jobTitle'],
+        $_POST['officeContact'],
+        $_POST['educationLevel'],
+        $_POST['areYouBornAgain'],
+        $_POST['dateBornAgain'],
+        $_POST['whatIsYourGiftForChristianService'],
+        $_POST['dateYouJoinedChurch'],
+        $_POST['department'],
+        $_POST['whoIntroducedYouToThisChurch'],
+        $_POST['membersLivingCloseToYou']
     );
 }
 ?>
@@ -128,6 +149,211 @@ if (isset($_POST['submit'])) {
 											<option value="4">Rev.</option>
 										</select>
 									</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Marital Status</label>
+										</div>
+										<div class="col-lg-6">
+											<select class="form-control" name="maritalStatus">
+												<option value="">Select Status</option>
+												<option value="Single">Single</option>
+												<option value="Married">Married</option>
+												<option value="Divorced">Divorced</option>
+												<option value="Widowed">Widowed</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Name of Spouse</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="nameOfSpouse">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Is Your Spouse A Christian?</label>
+										</div>
+										<div class="col-lg-6">
+											<select class="form-control" name="isYourSpouseAChristian">
+												<option value="">Select</option>
+												<option value="Yes">Yes</option>
+												<option value="No">No</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Number of Children</label>
+										</div>
+										<div class="col-lg-6">
+											<input type="number" class="form-control" name="numOfChildren">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Residence Address</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="residenceAddress">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>House Number</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="houseNumber">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Residence Landmark</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="residenceLandMark">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Phone Number</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="phoneNumber">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Job Status</label>
+										</div>
+										<div class="col-lg-6">
+											<select class="form-control" name="jobStatus">
+												<option value="">Select Status</option>
+												<option value="Employed">Employed</option>
+												<option value="Unemployed">Unemployed</option>
+												<option value="Self-Employed">Self-Employed</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Name of Employer</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="nameOfEmployer">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Job Title</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="jobTitle">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Office Contact</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="officeContact">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Education Level</label>
+										</div>
+										<div class="col-lg-6">
+											<select class="form-control" name="educationLevel">
+												<option value="">Select Level</option>
+												<option value="Primary">Primary</option>
+												<option value="Secondary">Secondary</option>
+												<option value="Tertiary">Tertiary</option>
+												<option value="Graduate">Graduate</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Are You Born Again?</label>
+										</div>
+										<div class="col-lg-6">
+											<select class="form-control" name="areYouBornAgain">
+												<option value="">Select</option>
+												<option value="Yes">Yes</option>
+												<option value="No">No</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Date Born Again</label>
+										</div>
+										<div class="col-lg-6">
+											<input type="date" class="form-control" name="dateBornAgain">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Gift for Christian Service</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="whatIsYourGiftForChristianService">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Date You Joined Church</label>
+										</div>
+										<div class="col-lg-6">
+											<input type="date" class="form-control" name="dateYouJoinedChurch">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Department</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="department">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Who Introduced You?</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="whoIntroducedYouToThisChurch">
+										</div>
+									</div>
+									<br><br>
+									<div class="form-group">
+										<div class="col-lg-4">
+											<label>Members Living Close To You</label>
+										</div>
+										<div class="col-lg-6">
+											<input class="form-control" name="membersLivingCloseToYou">
+										</div>
 									</div>
 									<br><br>
 									<div class="form-group">

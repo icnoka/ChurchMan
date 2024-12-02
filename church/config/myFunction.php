@@ -352,24 +352,46 @@ function del_std($id){
    // echo "<script>window.location.href='view-course.php'</script>";
 }
 
-function create_person($member_no, $firstname, $surname, $gender, $email, $contact1, $title = '0') {  // Default title to '0' (None)
+function create_person($member_no, $firstname, $surname, $gender, $email, $contact1, $title = '0', 
+    $imageUrl = null, $maritalStatus = null, $nameOfSpouse = null, $isYourSpouseAChristian = null,
+    $numOfChildren = null, $residenceAddress = null, $houseNumber = null, $residenceLandMark = null,
+    $phoneNumber = null, $jobStatus = null, $nameOfEmployer = null, $jobTitle = null,
+    $officeContact = null, $educationLevel = null, $areYouBornAgain = null, $dateBornAgain = null,
+    $whatIsYourGiftForChristianService = null, $dateYouJoinedChurch = null, $department = null,
+    $whoIntroducedYouToThisChurch = null, $membersLivingCloseToYou = null) {
+
     if ($member_no == "" || $firstname == "" || $surname == "" || $gender == "" || $contact1 == "") {
         echo "<script>alert('All fields are required.')</script>";
     } else {
         $db = Database::getInstance();
         $mysqli = $db->getConnection();
         
-        // Always include title in the query, defaulting to '0' if not specified
-        $query = "INSERT INTO person (member_no, firstname, surname, gender, email, contact1, title, isdeleted, isactive, ismember) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 0, 1, 1)";
+        $query = "INSERT INTO person (member_no, firstname, surname, gender, email, contact1, title, 
+            imageUrl, maritalStatus, nameOfSpouse, isYourSpouseAChristian, numOfChildren, 
+            residenceAddress, houseNumber, residenceLandMark, phoneNumber, jobStatus, 
+            nameOfEmployer, jobTitle, officeContact, educationLevel, areYouBornAgain, 
+            dateBornAgain, whatIsYourGiftForChristianService, dateYouJoinedChurch, 
+            department, whoIntroducedYouToThisChurch, membersLivingCloseToYou,
+            isdeleted, isactive, ismember) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, 1)";
+            
         $stmt = $mysqli->prepare($query);
-        $stmt->bind_param('sssssss', $member_no, $firstname, $surname, $gender, $email, $contact1, $title);
-
         if (false === $stmt) {
             trigger_error("Error in query: " . mysqli_connect_error(), E_USER_ERROR);
-        } else {
-            $stmt->execute();
+        }
+
+        $stmt->bind_param('ssssssssssissssssssssissssss',
+            $member_no, $firstname, $surname, $gender, $email, $contact1, $title,
+            $imageUrl, $maritalStatus, $nameOfSpouse, $isYourSpouseAChristian, $numOfChildren,
+            $residenceAddress, $houseNumber, $residenceLandMark, $phoneNumber, $jobStatus,
+            $nameOfEmployer, $jobTitle, $officeContact, $educationLevel, $areYouBornAgain,
+            $dateBornAgain, $whatIsYourGiftForChristianService, $dateYouJoinedChurch,
+            $department, $whoIntroducedYouToThisChurch, $membersLivingCloseToYou);
+
+        if ($stmt->execute()) {
             echo "<script>alert('Person Added Successfully')</script>";
+        } else {
+            echo "<script>alert('Error adding person: " . $stmt->error . "')</script>";
         }
     }
 }

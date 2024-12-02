@@ -100,6 +100,27 @@ CREATE TABLE IF NOT EXISTS `person` (
   `entryperson` bigint(20) NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastmodified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `imageUrl` varchar(500) DEFAULT NULL,
+  `maritalStatus` varchar(20) DEFAULT NULL,
+  `nameOfSpouse` varchar(150) DEFAULT NULL,
+  `isYourSpouseAChristian` tinyint(1) DEFAULT NULL,
+  `numOfChildren` int(11) DEFAULT NULL,
+  `residenceAddress` varchar(500) DEFAULT NULL,
+  `houseNumber` varchar(50) DEFAULT NULL,
+  `residenceLandMark` varchar(500) DEFAULT NULL,
+  `phoneNumber` varchar(20) DEFAULT NULL,
+  `jobStatus` varchar(50) DEFAULT NULL,
+  `nameOfEmployer` varchar(150) DEFAULT NULL,
+  `jobTitle` varchar(150) DEFAULT NULL,
+  `officeContact` varchar(20) DEFAULT NULL,
+  `educationLevel` varchar(50) DEFAULT NULL,
+  `areYouBornAgain` tinyint(1) DEFAULT NULL,
+  `dateBornAgain` date DEFAULT NULL,
+  `whatIsYourGiftForChristianService` varchar(500) DEFAULT NULL,
+  `dateYouJoinedChurch` date DEFAULT NULL,
+  `department` varchar(100) DEFAULT NULL,
+  `whoIntroducedYouToThisChurch` varchar(150) DEFAULT NULL,
+  `membersLivingCloseToYou` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`personid`),
   UNIQUE KEY `member_no` (`member_no`),
   KEY `SundaySchoolClass` (`sundayschoolclass`),
@@ -117,7 +138,8 @@ TRUNCATE TABLE `person`;
 
 INSERT INTO `person` (`personid`, `member_no`, `sundayschoolclass`, `title`, `surname`, `firstname`, `othernames`, `gender`, `birthdate`, `country`, `occupation`, `email`, `postaladdress`, `contact1`, `contact2`, `isdeleted`, `isactive`, `ismember`, `entryperson`, `datecreated`, `lastmodified`) VALUES
 (1, 'HQTD/HP005/7626', 'HP', '0', 'ARYEE', 'MR. AND MRS. ISAAC CHARLES ARYEE', '', '', '0000-00-00', 'iom', 'io', 'ic@ee.com', 'P.O.Box,Accra', '0243767626', '', 0, 1, 0, 0, '2018-01-14 21:02:51', '2018-01-14 21:02:51'),
-(2, 'HQTD/PE001/0637', 'PE', '0', 'COBBY', 'JOHNSON', 'ATSU', 'M', '0000-00-00', '', '', '', '', '024***0637', '', 0, 1, 0, 3, '2018-01-21 04:58:26', '2018-01-21 04:58:26')
+(2, 'HQTD/PE001/0637', 'PE', '0', 'COBBY', 'JOHNSON', 'ATSU', 'M', '0000-00-00', '', '', '', '', '024***0637', '', 0, 1, 0, 3, '2018-01-21 04:58:26', '2018-01-21 04:58:26'),
+(3, 'HQTD/FA001/1234', 'FA', '1', 'DOE', 'JANE', 'ELIZABETH', 'F', '1990-05-15', 'USA', 'Engineer', 'jane.doe@example.com', '123 Main St, Anytown', '555-1234', '555-5678', 0, 1, 1, 1, '2023-10-01 12:00:00', '2023-10-01 12:00:00');
 
 -- --------------------------------------------------------
 
