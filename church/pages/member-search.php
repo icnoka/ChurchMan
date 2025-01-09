@@ -1,22 +1,20 @@
 <?php
-session_start ();
+session_start();
 
-if (! (isset ( $_SESSION ['login'] ))) {
-	
-	header ( 'location:../index.php' );
-} 
-   
-    include('../config/MyFunction.php');
-    $obj=new DbFunction();
-	$rs=$obj->showSubject();
+if (!(isset($_SESSION['login']))) {
+    header('location:../index.php');
+}
+
+include('../config/MyFunction.php');
+$obj = new DbFunction();
+$rs = $obj->showSubject();
 
 
-	if(isset($_GET['del']))
-    { 
-        $obj->del_subject(intval($_GET['del']));
-     }
+if (isset($_GET['del'])) {
+    $obj->del_subject(intval($_GET['del']));
+}
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +36,8 @@ if (! (isset ( $_SESSION ['login'] ))) {
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
-    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+        rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
     <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
@@ -51,76 +50,82 @@ if (! (isset ( $_SESSION ['login'] ))) {
 </head>
 
 <body>
-
     <div id="wrapper">
-
         <!-- Navigation -->
-      
-      <?php include('leftbar.php')?>;
-
-           
-         <nav>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                   <h4 class="page-header"> <?php echo strtoupper("welcome"." ".htmlentities($_SESSION['login']));?></h4>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            View Course
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>S No</th>
-                                            <th>Member No</th>
-                                            <th>First Name</th>
-                                            <th>Surname</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <?php 
-                                         $sn=1;
-                                     while($res=$rs->fetch_object()){?>	
-                                        <tr class="odd gradeX">
-                                            <td><?php echo $sn?></td>
-                                            <td><?php echo htmlentities(strtoupper($res->member_no));?></td>
-                                            <td><?php echo htmlentities(strtoupper($res->firstname));?></td>
-                                            <td><?php echo htmlentities(strtoupper($res->surname));?></td>
-                                            <td>&nbsp;&nbsp;<a href="edit-person.php?pid=<?php echo htmlentities($res->personid);?>"><p class="fa fa-edit"></p></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                             <a href="view-person.php?del=<?php echo htmlentities($res->personid); ?>"> <p class="fa fa-times-circle"></p></td>
-                                            
-                                        </tr>
-                                        
-                                    <?php $sn++;}?>   	           
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                           
-                        </div>
-                        <!-- /.panel-body -->
+        <?php include('leftbar.php') ?>;
+        <nav>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="page-header">
+                            <?php echo strtoupper("welcome" . " " . htmlentities($_SESSION['login'])); ?>
+                        </h4>
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Member Search
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    <table class="table table-striped table-bordered table-hover"
+                                        id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>S No</th>
+                                                <th>Member No</th>
+                                                <th>First Name</th>
+                                                <th>Surname</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <?php
+                                            $sn = 1;
+                                            while ($res = $rs->fetch_object()) { ?>
+                                                <tr class="odd gradeX">
+                                                    <td><?php echo $sn ?></td>
+                                                    <td><a href="view-member.php?pid=<?php htmlentities($res->personid); ?>"><?php echo htmlentities(strtoupper($res->member_no)); ?></a></td>
+                                                    <td><?php echo htmlentities(strtoupper($res->firstname)); ?></td>
+                                                    <td><?php echo htmlentities(strtoupper($res->surname)); ?></td>
+                                                    <td>
+                                                        &nbsp;&nbsp;
+                                                        <a href="edit-person.php?pid=<?php echo htmlentities($res->personid); ?>">
+                                                            <p class="fa fa-edit"></p>
+                                                        </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <a
+                                                            href="view-person.php?del=<?php echo htmlentities($res->personid); ?>">
+                                                            <p class="fa fa-times-circle"></p>
+                                                    </td>
+
+                                                </tr>
+
+                                                <?php $sn++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+
+
             </div>
-            <!-- /.row -->
-           
-            
-           
-        </div>
-        <!-- /#page-wrapper -->
+            <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -143,11 +148,11 @@ if (! (isset ( $_SESSION ['login'] ))) {
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
                 responsive: true
+            });
         });
-    });
     </script>
 
 </body>
