@@ -70,11 +70,11 @@ class DbFunction
 
 		if ($cshort == "") {
 
-			echo "<script>alert('Select  Course Short Name')</script>";
+			echo "<script>alert('Select Course Short Name')</script>";
 
 		} else if ($cfull == "") {
 
-			echo "<script>alert('Select  Course Full Name')</script>";
+			echo "<script>alert('Select Course Full Name')</script>";
 
 		} else {
 
@@ -119,7 +119,7 @@ class DbFunction
 
 	}
 
-	function showSubject()
+	function showMembers()
 	{
 
 		$db = Database::getInstance();
@@ -162,7 +162,6 @@ class DbFunction
 		return $stmt;
 
 	}
-
 
 	function create_subject($cshort, $cfull, $sub1, $sub2, $sub3)
 	{

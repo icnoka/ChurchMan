@@ -7,7 +7,7 @@ if (!(isset($_SESSION['login']))) {
 
 include('../config/MyFunction.php');
 $obj = new DbFunction();
-$rs = $obj->showSubject();
+$rs = $obj->showMembers();
 
 
 if (isset($_GET['del'])) {
@@ -91,7 +91,7 @@ if (isset($_GET['del'])) {
                                             while ($res = $rs->fetch_object()) { ?>
                                                 <tr class="odd gradeX">
                                                     <td><?php echo $sn ?></td>
-                                                    <td><a href="view-member.php?pid=<?php htmlentities($res->personid); ?>"><?php echo htmlentities(strtoupper($res->member_no)); ?></a></td>
+                                                    <td><a href="view-member.php?member_no=<?php echo htmlentities($res->personid); ?>"><?php echo htmlentities(strtoupper($res->member_no)); ?></a></td>
                                                     <td><?php echo htmlentities(strtoupper($res->firstname)); ?></td>
                                                     <td><?php echo htmlentities(strtoupper($res->surname)); ?></td>
                                                     <td>
