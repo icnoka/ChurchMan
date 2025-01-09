@@ -3,17 +3,17 @@ class Database {
 	private $_connection;
 	private static $_instance; //The single instance
 	
-	// private $_host = "localhost";
-	// private $_username = "root";
-	// private $_password = "";
-	// private $_database = "church_app";
-	// private $port = 3306; // specify the port number
-
 	private $_host = "localhost";
 	private $_username = "root";
-	private $_password = "Missions@14";
+	private $_password = "";
 	private $_database = "church_app";
-	private $port = 3307; // specify the port number
+	private $port = 3306; // specify the port number
+
+	// private $_host = "localhost";
+	// private $_username = "root";
+	// private $_password = "Missions@14";
+	// private $_database = "church_app";
+	// private $port = 3307; // specify the port number
 	/*
 	Get an instance of the Database
 	@return Instance
