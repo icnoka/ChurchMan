@@ -12,7 +12,7 @@ class DbFunction{
    else{ 		
 	$db = Database::getInstance();
 	$mysqli = $db->getConnection();
-	$query = "SELECT loginid, password FROM tbl_login where loginid=? and password=? ";
+	$query = "SELECT username, password FROM users where username=? and password=? ";
 	$stmt= $mysqli->prepare($query);
 	if(false===$stmt){
 		
