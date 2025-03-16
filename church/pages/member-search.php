@@ -14,6 +14,8 @@ if (isset($_GET['del'])) {
     $obj->del_subject(intval($_GET['del']));
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
