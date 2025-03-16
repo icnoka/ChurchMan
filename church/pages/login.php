@@ -1,13 +1,13 @@
-<?php 
+<?php
 session_start();
-if(isset($_POST['submit'])){
-	
-	 include('../config/myFunction.php');
-	 $obj=new DbFunction();
-	 $_SESSION['login']=$_POST['id'];
-	 $obj->login($_POST['id'],$_POST['password']);
+if (isset($_POST['submit'])) {
+
+    include('../config/myFunction.php');
+    $obj = new DbFunction();
+    $_SESSION['login'] = $_POST['id'];
+    $obj->login($_POST['id'], $_POST['password']);
 }
-	
+
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../dist/css/jquery.validate.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/css/jquery.validate.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,39 +48,42 @@ if(isset($_POST['submit'])){
 
     <div class="container">
         <br><br><br><br>
-            <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form method="post">
-                            <fieldset>
-                                <img src="..\image\citadel.jpeg" alt="" style="width:250px; height: 150px; padding-left:20%;"/>
-                                <div class="form-group">
-             <input class="form-control" placeholder="Login Id"  id="id"name="id" type="text" autofocus autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" id="password"name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                    
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" value="login" name="submit" class="btn btn-lg btn-success btn-block">
-                            
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post">
+                        <fieldset>
+                            <img src="..\image\citadel.jpeg" alt=""
+                                style="width:250px; height: 150px; padding-left:20%;" />
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Login Id" id="id" name="id" type="text"
+                                    autofocus autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" id="password" name="password"
+                                    type="password" value="">
+                            </div>
+                            <div class="checkbox">
                                 <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Forgot Password
-                                    </label>
-                                </fieldset>
-                        </form>
-                    </div>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <input type="submit" value="login" name="submit" class="btn btn-lg btn-success btn-block">
+
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me">Forgot Password
+                            </label>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- jQuery -->
@@ -94,23 +97,23 @@ if(isset($_POST['submit'])){
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
- <script src="../dist/jquery-1.3.2.js" type="text/javascript"></script>
- <script src="../dist/jquery.validate.js" type="text/javascript"></script>
- <script type="text/javascript">
-            
-            jQuery(function(){
-                jQuery("#id").validate({
-                    expression: "if (VAL.match(/^[a-z]$/)) return true; else return false;",
-                    message: "Should be a valid id"
-                });
-                jQuery("#password").validate({
-                    expression: "if (VAL.match(/^[a-z]$/)) return true; else return false;",
-                    message: "Should be a valid password"
-                });
-                
+    <script src="../dist/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../dist/jquery.validate.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        jQuery(function () {
+            jQuery("#id").validate({
+                expression: "if (VAL.match(/^[a-z]$/)) return true; else return false;",
+                message: "Should be a valid id"
             });
-            
-        </script>
+            jQuery("#password").validate({
+                expression: "if (VAL.match(/^[a-z]$/)) return true; else return false;",
+                message: "Should be a valid password"
+            });
+
+        });
+
+    </script>
 </body>
 
 </html>

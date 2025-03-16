@@ -14,7 +14,7 @@ class DbFunction
 				$db = Database::getInstance();
 				$mysqli = $db->getConnection();
 				$query = "SELECT username, password FROM church_app.users where username=? and password=? ";
-				
+
 				// $query = "SELECT * FROM users ";
 				// $result = $mysqli->query($query);
 				// if ($result->num_rows > 0) {
@@ -34,7 +34,7 @@ class DbFunction
 					trigger_error("Error in query: " . mysqli_connect_error(), E_USER_ERROR);
 				} else {
 
-					$stmt->bind_param('ss', $loginid, $password); 
+					$stmt->bind_param('ss', $loginid, $password);
 					$stmt->execute();
 					$stmt->bind_result($db_username, $db_password);
 					//echo db_username;
@@ -533,7 +533,7 @@ class DbFunction
 		$whoIntroducedYouToThisChurch = null,
 		$membersLivingCloseToYou = null
 	) {
-
+		$entryperson = 1;
 		if ($member_no == "" || $firstname == "" || $surname == "" || $gender == "" || $contact1 == "") {
 			echo "<script>alert('All fields are required.')</script>";
 		} else {
@@ -546,8 +546,8 @@ class DbFunction
             nameOfEmployer, jobTitle, officeContact, educationLevel, areYouBornAgain, 
             dateBornAgain, whatIsYourGiftForChristianService, dateYouJoinedChurch, 
             department, whoIntroducedYouToThisChurch, membersLivingCloseToYou,
-            isdeleted, isactive, ismember) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, 1)";
+            isdeleted, isactive, ismember, entryperson) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, 1, ?)";
 
 			$stmt = $mysqli->prepare($query);
 			if (false === $stmt) {
@@ -555,7 +555,7 @@ class DbFunction
 			}
 
 			$stmt->bind_param(
-				'ssssssssssissssssssssissssss',
+				'ssssssssssissssssssssisssssss',
 				$member_no,
 				$firstname,
 				$surname,
@@ -583,7 +583,8 @@ class DbFunction
 				$dateYouJoinedChurch,
 				$department,
 				$whoIntroducedYouToThisChurch,
-				$membersLivingCloseToYou
+				$membersLivingCloseToYou,
+				$entryperson
 			);
 
 			if ($stmt->execute()) {

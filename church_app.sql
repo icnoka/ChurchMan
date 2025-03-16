@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
+-- WLCC
 -- Database: `church_app`
 --
 CREATE DATABASE IF NOT EXISTS `church_app` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
@@ -74,7 +74,7 @@ INSERT INTO `lookups` (`lookupid`, `lookup#`, `text`, `value`, `comment`, `sort_
 (20, 4, 'Ussher.', '1', 'Department', 2),
 (21, 4, 'Music.', '2', 'Department', 2),
 (22, 4, 'Protocol.', '3', 'Department', 3),
-(23, 4, 'Aoudio.', '4', 'Department', 4);;
+(23, 4, 'Audio.', '4', 'Department', 4);;
 
 -- --------------------------------------------------------
 

@@ -8,6 +8,12 @@ if (!isset($_SESSION['login'])) {
 	exit();
 }
 
+function generateRandomId($length = 10)
+{
+	return substr(bin2hex(random_bytes($length)), 0, $length);
+}
+
+
 if (isset($_POST['submit'])) {
 	try {
 		include('../config/MyFunction.php');
@@ -49,7 +55,8 @@ if (isset($_POST['submit'])) {
 				throw new Exception("$field is required.");
 			}
 		}
-
+		var_dump($_POST);
+		
 		// Create person with validated data
 		$result = $obj->create_person(
 			htmlspecialchars($_POST['member_no']),
@@ -63,7 +70,7 @@ if (isset($_POST['submit'])) {
 			htmlspecialchars($_POST['maritalStatus']),
 			htmlspecialchars($_POST['nameOfSpouse']),
 			htmlspecialchars($_POST['isYourSpouseAChristian']),
-			filter_var($_POST['numOfChildren'], FILTER_SANITIZE_NUMBER_INT),
+			$_POST['numOfChildren'] != null ? filter_var($_POST['numOfChildren'], FILTER_SANITIZE_NUMBER_INT) : 0,
 			htmlspecialchars($_POST['residenceAddress']),
 			htmlspecialchars($_POST['houseNumber']),
 			htmlspecialchars($_POST['residenceLandMark']),
@@ -74,9 +81,9 @@ if (isset($_POST['submit'])) {
 			htmlspecialchars($_POST['officeContact']),
 			htmlspecialchars($_POST['educationLevel']),
 			htmlspecialchars($_POST['areYouBornAgain']),
-			htmlspecialchars($_POST['dateBornAgain']),
+			$_POST['dateBornAgain']!=null?htmlspecialchars($_POST['dateBornAgain']):null,
 			htmlspecialchars($_POST['whatIsYourGiftForChristianService']),
-			htmlspecialchars($_POST['dateYouJoinedChurch']),
+			$_POST['dateYouJoinedChurch']!=null?htmlspecialchars($_POST['dateYouJoinedChurch']):null,
 			htmlspecialchars($_POST['department']),
 			htmlspecialchars($_POST['whoIntroducedYouToThisChurch']),
 			htmlspecialchars($_POST['membersLivingCloseToYou'])
@@ -118,7 +125,8 @@ if (isset($_POST['submit'])) {
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-lg-12">
-						<h4 class="page-header"><?php echo strtoupper("welcome" . " " . htmlentities($_SESSION['login'])); ?></h4>
+						<h4 class="page-header">
+							<?php echo strtoupper("welcome" . " " . htmlentities($_SESSION['login'])); ?></h4>
 					</div>
 				</div>
 				<div class="row">
@@ -133,8 +141,10 @@ if (isset($_POST['submit'])) {
 												<label>Profile Image</label>
 											</div>
 											<div class="col-lg-6">
-												<input type="file" class="form-control" name="memberImage" accept="image/jpeg,image/png,image/gif">
-												<small class="text-muted">Max file size: 5MB. Allowed formats: JPG, PNG, GIF</small>
+												<input type="file" class="form-control" name="memberImage"
+													accept="image/jpeg,image/png,image/gif">
+												<small class="text-muted">Max file size: 5MB. Allowed formats: JPG, PNG,
+													GIF</small>
 											</div>
 										</div>
 										<br><br>
@@ -143,7 +153,8 @@ if (isset($_POST['submit'])) {
 												<label>Member No<span style="font-size:11px;color:red">*</span></label>
 											</div>
 											<div class="col-lg-6">
-												<input class="form-control" name="member_no" required="required">
+												<input class="form-control" name="member_no" required="required"
+													value="<?php echo generateRandomId(); ?>">
 											</div>
 										</div>
 										<br><br>
@@ -419,7 +430,8 @@ if (isset($_POST['submit'])) {
 										<div class="form-group">
 											<div class="col-lg-4"></div>
 											<div class="col-lg-6">
-												<input type="submit" class="btn btn-primary" name="submit" value="Add Person">
+												<input type="submit" class="btn btn-primary" name="submit"
+													value="Add Person">
 											</div>
 										</div>
 									</div>
